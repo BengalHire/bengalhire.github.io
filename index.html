@@ -3,187 +3,200 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="BengalHire: Manpower & Facility Services in Kolkata. Verified helpers, cleaners, cooks with fast joining and instant replacement."/>
-    <title>BengalHire - Manpower & Facility Services in Kolkata</title>
+    <meta name="description" content="BengalHire: Manpower & Facility Services in Kolkata. Verified helpers, cleaners, cooks – fast & neon cool."/>
+    <title>BengalHire – Neon Powered Manpower in Kolkata</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         :root {
-            --primary: #1e40af;
-            --primary-dark: #1e3a8a;
-            --gold: #fbbf24;
-            --light: #eff6ff;
+            --neon-blue: #00f0ff;
+            --neon-purple: #d500f9;
+            --neon-pink: #ff00aa;
+            --dark-bg: #0d001a;
+            --glass: rgba(20, 20, 60, 0.35);
         }
 
         body {
-            background: linear-gradient(-45deg, #1e3a8a, #2563eb, #3b82f6, #60a5fa);
+            background: linear-gradient(-45deg, #0d001a, #1a0033, #330066, #4d0099);
             background-size: 400% 400%;
-            animation: gradientFlow 15s ease infinite;
+            animation: cyberFlow 18s ease infinite;
+            color: #e0f7ff;
             min-height: 100vh;
-            color: #111827;
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            overflow-x: hidden;
         }
 
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        @keyframes cyberFlow {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        .neon-glow {
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 40px var(--neon-purple);
         }
 
-        .floating-btn {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: float 3.5s ease-in-out infinite;
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 240, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 240, 255, 0.08);
         }
 
-        .floating-btn:hover {
+        .neon-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        .neon-btn:hover {
             transform: translateY(-12px) scale(1.08);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 40px var(--neon-blue), 0 0 80px var(--neon-purple);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50%      { transform: translateY(-12px); }
+        .neon-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(0,240,255,0.4) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.6s;
         }
 
-        .lang-switch {
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(10px);
+        .neon-btn:hover::before { opacity: 1; }
+
+        @keyframes pulseGlow {
+            from { box-shadow: 0 0 15px var(--neon-blue); }
+            to   { box-shadow: 0 0 35px var(--neon-purple); }
+        }
+
+        /* Custom Neon Language Switcher */
+        .lang-container {
+            background: rgba(13, 0, 26, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
         }
 
         .lang-btn {
             transition: all 0.3s ease;
+            text-shadow: 0 0 8px var(--neon-blue);
         }
 
         .lang-btn.active {
-            background: white;
-            color: var(--primary-dark);
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: black;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 0 20px var(--neon-pink);
+            transform: scale(1.1);
         }
 
         .lang-btn:hover:not(.active) {
-            background: rgba(255,255,255,0.25);
+            background: rgba(0, 240, 255, 0.25);
+            transform: scale(1.05);
         }
 
         .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 25px 60px rgba(0, 240, 255, 0.3);
         }
     </style>
 </head>
-<body class="text-gray-900">
+<body>
 
-    <!-- Custom Language Switcher -->
-    <div class="fixed top-5 right-5 z-50 glass rounded-full px-2 py-1.5 flex gap-1.5 shadow-2xl">
-        <button class="lang-btn lang-switch px-4 py-2 rounded-full text-sm font-medium text-white active" data-lang="en">EN</button>
-        <button class="lang-btn lang-switch px-4 py-2 rounded-full text-sm font-medium text-white" data-lang="hi">हिंदी</button>
-        <button class="lang-btn lang-switch px-4 py-2 rounded-full text-sm font-medium text-white" data-lang="bn">বাংলা</button>
+    <!-- Neon Language Switcher -->
+    <div class="fixed top-5 right-5 z-50 lang-container rounded-full px-2 py-1.5 flex gap-2 shadow-2xl">
+        <button class="lang-btn px-5 py-2.5 rounded-full text-base font-bold active" data-lang="en">EN</button>
+        <button class="lang-btn px-5 py-2.5 rounded-full text-base font-bold" data-lang="hi">हिंदी</button>
+        <button class="lang-btn px-5 py-2.5 rounded-full text-base font-bold" data-lang="bn">বাংলা</button>
     </div>
 
-    <!-- Hero -->
-    <header class="min-h-screen flex items-center justify-center relative px-6">
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
         <div class="text-center max-w-5xl z-10">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-white drop-shadow-2xl">
-                Need Helper, Cleaner or Cook<br/>in Kolkata?
+            <h1 class="text-5xl md:text-7xl font-black mb-8 neon-glow">
+                NEED HELPER, CLEANER<br/>OR COOK IN KOLKATA?
             </h1>
 
-            <div class="text-4xl md:text-6xl font-bold mb-10 gold-accent drop-shadow-lg">
-                BengalHire
+            <div class="text-5xl md:text-7xl font-extrabold mb-12 gold-accent neon-glow drop-shadow-[0_0_30px_#fbbf24]">
+                BENGALHIRE
             </div>
 
-            <p class="text-2xl md:text-3xl font-medium mb-12 text-white/90">
-                Manpower & Facility Services
+            <p class="text-2xl md:text-4xl font-medium mb-16 text-cyan-200 drop-shadow-lg">
+                MANPOWER & FACILITY SERVICES • NEON FAST • VERIFIED CREW
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <div class="flex flex-col sm:flex-row gap-8 justify-center">
                 <a href="https://wa.me/919477186697"
-                   class="floating-btn glass text-white px-10 py-6 rounded-2xl text-xl font-bold shadow-2xl flex items-center justify-center gap-3 hover:bg-white/20">
-                    💬 Chat on WhatsApp
+                   class="neon-btn glass-card text-white px-10 py-6 rounded-2xl text-2xl font-bold flex items-center justify-center gap-4 shadow-2xl">
+                    💬 WHATSAPP NOW
                 </a>
 
                 <a href="https://tally.so/r/eqQBWe" target="_blank"
-                   class="floating-btn bg-amber-400 hover:bg-amber-500 text-blue-950 px-10 py-6 rounded-2xl text-xl font-bold shadow-2xl flex items-center justify-center gap-3">
-                    📝 Apply Now
+                   class="neon-btn glass-card bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white px-10 py-6 rounded-2xl text-2xl font-bold flex items-center justify-center gap-4 shadow-2xl">
+                    📝 APPLY – LEVEL UP
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Benefits -->
-    <section class="py-20 px-6 bg-white/10 backdrop-blur-lg">
+    <!-- Benefits – Gaming Card Style -->
+    <section class="py-24 px-6">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white gold-accent">
-                Why Choose BengalHire?
+            <h2 class="text-5xl font-black text-center mb-20 neon-glow text-white">
+                WHY BENGALHIRE?
             </h2>
 
             <div class="grid md:grid-cols-4 gap-8">
-                <div class="glass p-8 rounded-2xl text-center card-hover transition-all duration-500">
-                    <p class="text-2xl font-bold text-white">✓ Local Verified Staff</p>
+                <div class="glass-card p-10 rounded-3xl text-center card-hover transition-all duration-500">
+                    <p class="text-3xl font-bold neon-glow">✓ LOCAL VERIFIED</p>
                 </div>
-                <div class="glass p-8 rounded-2xl text-center card-hover transition-all duration-500">
-                    <p class="text-2xl font-bold text-white">✓ Fast Joining</p>
+                <div class="glass-card p-10 rounded-3xl text-center card-hover transition-all duration-500">
+                    <p class="text-3xl font-bold neon-glow">✓ FAST JOINING</p>
                 </div>
-                <div class="glass p-8 rounded-2xl text-center card-hover transition-all duration-500">
-                    <p class="text-2xl font-bold text-white">✓ Instant Replacement</p>
+                <div class="glass-card p-10 rounded-3xl text-center card-hover transition-all duration-500">
+                    <p class="text-3xl font-bold neon-glow">✓ INSTANT REPLACE</p>
                 </div>
-                <div class="glass p-8 rounded-2xl text-center card-hover transition-all duration-500">
-                    <p class="text-2xl font-bold text-white">✓ Experienced Workforce</p>
+                <div class="glass-card p-10 rounded-3xl text-center card-hover transition-all duration-500">
+                    <p class="text-3xl font-bold neon-glow">✓ PRO WORKFORCE</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Info Bottom -->
-    <footer class="py-16 px-6 text-center text-white bg-gradient-to-t from-blue-950/80 to-transparent">
-        <p class="text-2xl font-bold mb-4">Get in Touch</p>
-        <p class="text-xl mb-2">Phone: +91 94771 86697 / +91 79808 10149</p>
-        <p class="text-xl mb-6">Email: bengalhire@gmail.com</p>
-        <p class="text-lg mb-10">Kolkata, West Bengal</p>
+    <!-- Footer -->
+    <footer class="py-20 px-6 text-center text-cyan-200 bg-gradient-to-t from-black/70 to-transparent">
+        <p class="text-3xl font-bold mb-6 neon-glow">GET IN TOUCH – POWER UP</p>
+        <p class="text-2xl mb-4">+91 94771 86697   •   +91 79808 10149</p>
+        <p class="text-xl mb-8">bengalhire@gmail.com   •   Kolkata, West Bengal</p>
 
         <a href="https://www.instagram.com/hire_bengal" target="_blank"
-           class="inline-flex items-center glass px-8 py-4 rounded-2xl text-xl font-bold hover:bg-white/20 transition">
-            <span class="mr-3 text-2xl">📸</span> Follow @hire_bengal on Instagram
+           class="neon-btn glass-card inline-flex items-center px-10 py-5 rounded-2xl text-xl font-bold mt-6">
+            <span class="mr-4 text-3xl">📸</span> FOLLOW @hire_bengal
         </a>
 
-        <p class="mt-12 text-sm opacity-80">
-            © 2026 BengalHire • Manpower & Facility Services
+        <p class="mt-16 text-sm opacity-70">
+            © 2026 BENGALHIRE – NEON MANPOWER • GAME ON
         </p>
     </footer>
 
-    <!-- Simple Custom Language Switcher Script -->
+    <!-- Language Switcher Logic (Instant, No Delay) -->
     <script>
-        const buttons = document.querySelectorAll('.lang-switch');
-        const html = document.documentElement;
-
-        buttons.forEach(btn => {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 // Remove active from all
-                buttons.forEach(b => b.classList.remove('active'));
-                // Add active to clicked
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                // Activate clicked
                 btn.classList.add('active');
 
                 const lang = btn.dataset.lang;
+                document.documentElement.lang = lang;
 
-                if (lang === 'en') {
-                    html.lang = 'en';
-                    // Here you could implement real translation logic
-                    alert('Switched to English (full translation would be implemented here)');
-                } else if (lang === 'hi') {
-                    html.lang = 'hi';
-                    alert('स्विच हिंदी में किया गया (पूर्ण अनुवाद यहाँ लागू किया जाएगा)');
-                } else if (lang === 'bn') {
-                    html.lang = 'bn';
-                    alert('বাংলায় স্যুইচ করা হয়েছে (পূর্ণ অনুবাদ এখানে প্রয়োগ করা হবে)');
-                }
+                // Optional: Here you can add real content swapping later
+                // For now – visual feedback only (instant)
+                console.log(`Language switched to: ${lang}`);
             });
         });
     </script>
